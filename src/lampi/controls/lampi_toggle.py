@@ -34,7 +34,7 @@ class LampiToggle(ToggleButton):
         Clock.schedule_once(self._update_state_color)
 
     def _update_state_color(self, *args, **kwargs):
-        if self.state == 'down':
+        if self.state == "down":
             self._state_color = self.accent_color
         else:
             self._state_color = [0.6, 0.6, 0.6, 1.0]

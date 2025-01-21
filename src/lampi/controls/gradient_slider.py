@@ -49,15 +49,16 @@ class GradientSlider(Slider):
         size = width * height * depth
 
         texture = Texture.create(size=(width, height))
-        texture_buffer = [int(x*255/size) for x in range(size)]
-        texture_bytes = array('B', texture_buffer)
+        texture_buffer = [int(x * 255 / size) for x in range(size)]
+        texture_bytes = array("B", texture_buffer)
 
         for i, color in enumerate(self.colors):
-            buffer_index = i*depth
-            texture_bytes[buffer_index:buffer_index+2] = \
-                array('B', [int(c * 255.0) for c in color])
+            buffer_index = i * depth
+            texture_bytes[buffer_index : buffer_index + 2] = array(
+                "B", [int(c * 255.0) for c in color]
+            )
 
-        texture.blit_buffer(texture_bytes, colorfmt='rgb', bufferfmt='ubyte')
+        texture.blit_buffer(texture_bytes, colorfmt="rgb", bufferfmt="ubyte")
 
         self._texture = texture
 
@@ -85,11 +86,11 @@ class GradientSlider(Slider):
         self._thumb_color = (r, g, b, 1.0)
 
         h, s, v = colorsys.rgb_to_hsv(r, g, b)
-        self._thumb_border_color = colorsys.hsv_to_rgb(h, s, v*0.75)
+        self._thumb_border_color = colorsys.hsv_to_rgb(h, s, v * 0.75)
 
     def _update_thumb_image(self):
         r, g, b, a = self._thumb_color
-        cumulative = r*0.213 + g*0.715 + b*0.072
+        cumulative = r * 0.213 + g * 0.715 + b * 0.072
 
         if cumulative < 0.5:
             self._thumb_image = self.thumb_image_light

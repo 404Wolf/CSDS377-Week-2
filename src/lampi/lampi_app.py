@@ -1,0 +1,2 @@
+class LampApp(object):
+    pass
