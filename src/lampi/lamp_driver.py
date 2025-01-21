@@ -7,6 +7,8 @@ LedColor = Literal["red", "green", "blue"]
 
 
 class LampDriver:
+    """Driver for the Lampi"""
+
     @dataclass
     class LED:
         color: LedColor
