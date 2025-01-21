@@ -8,14 +8,17 @@ BoxLayout:
     id: hue
     min: 0
     max: 360
+    on_value: app.hue = self.value
 
   LampiSlider:
     id: saturation
     min: 0
     max: 100
+    on_value: app.saturation = self.value
 
   LampiSlider:
     id: brightness
     min: 0
     max: 100
+    on_value: app.brightness = self.value
 

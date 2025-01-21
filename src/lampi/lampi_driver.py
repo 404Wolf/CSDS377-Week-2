@@ -6,7 +6,7 @@ LED_COLORS = ("red", "green", "blue")
 LedColor = Literal["red", "green", "blue"]
 
 
-class LampDriver:
+class LampiDriver:
     """Driver for the Lampi"""
 
     @dataclass
@@ -24,9 +24,9 @@ class LampDriver:
     def __init__(self, pi: pigpio.pi, red_pin=19, green_pin=26, blue_pin=13):
         self._pi = pi
         self._leds = {
-            "red": LampDriver.LED("red", red_pin),
-            "green": LampDriver.LED("green", green_pin),
-            "blue": LampDriver.LED("blue", blue_pin),
+            "red": LampiDriver.LED("red", red_pin),
+            "green": LampiDriver.LED("green", green_pin),
+            "blue": LampiDriver.LED("blue", blue_pin),
         }
 
     @property
