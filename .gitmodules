@@ -1,0 +1,3 @@
+[submodule "connected-devices-spring25"]
+	path = connected-devices-spring25
+	url = https://github.com/CWRU-Connected-Devices/connected-devices-spring25
