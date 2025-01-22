@@ -50,7 +50,7 @@ class LampiDriver:
         Args:
             value (int): S from HSV. Value ranges from 0 - 100.
         """
-        if (value < 0 or value > 100):
+        if value < 0 or value > 100:
             print("Invalid saturation value provided. Ignoring...")
             return None
 
@@ -118,7 +118,7 @@ class LampiDriver:
         scaled_s = self._saturation / 100
         scaled_v = self._brightness / 100
 
-        (r, g, b) = hsv_to_rgb(scaled_h, scaled_s, scaled_v) 
+        (r, g, b) = hsv_to_rgb(scaled_h, scaled_s, scaled_v)
         full_r = floor(r * 255)
         full_g = floor(g * 255)
         full_b = floor(b * 255)
@@ -133,29 +133,27 @@ class LampiDriver:
         """
         return self._on
 
-    def turn_on(self):
-        """Turns the LED on
+    @on.setter
+    def on(self, value: bool) -> None:
+        """Sets the LED to be on or off
+
+        Args:
+            value (bool): True to turn on, False to turn off
         """
-        self._on = True
+        print("We are turning it on", value)
+        self._on = value
         self._update_lamp()
 
-    def turn_off(self):
-        """Turns the LED off
-        """
-        self._on = False
-        self._update_lamp()
-    
     def _update_lamp(self) -> None:
-        """Updates the lamp's LED to match the current internal state.
-        """
+        """Updates the lamp's LED to match the current internal state."""
 
         # If set to be off, turn off all LEDs and stop
-        if (not self._on):
+        if not self._on:
             for led in self._leds.values():
                 self._pi.set_PWM_dutycycle(led.signal, 0)
 
             return
-        
+
         # Otherwise, determine the current RGB and set the LED accordingly
         (r, g, b) = self.get_rgb()
         self._pi.set_PWM_dutycycle(self._leds["red"].signal, r)

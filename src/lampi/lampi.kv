@@ -22,3 +22,6 @@ BoxLayout:
     max: 100
     on_value: app.brightness = self.value
 
+  LampiOnOffButton:
+    on_press: app.on = self.get_on_then_toggle()
+
