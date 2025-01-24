@@ -1,5 +1,11 @@
 .vscode
 
+# Created by https://www.toptal.com/developers/gitignore/api/python
+# Edit at https://www.toptal.com/developers/gitignore?templates=python
+
+### Python ###
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -25,6 +31,10 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
+*.egg-info/
+.installed.cfg
+*.egg
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -44,6 +54,10 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+*,cover
+.hypothesis/
+.pytest_cache/
+cover/
 *,cover
 .hypothesis/
 
@@ -66,6 +80,11 @@ instance/
 docs/_build/
 
 # PyBuilder
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+.pybuilder/
+>>>>>>> 8b36a36 (Merge branch 'main' of https://github.com/CWRU-Connected-Devices/connected-devices-spring25 into ours)
 target/
 
 # IPython Notebook
@@ -86,13 +105,75 @@ ENV/
 
 # Spyder project settings
 .spyderproject
+<<<<<<< HEAD
+=======
+.spyproject
+=======
+target/
+>>>>>>> 8b36a36 (Merge branch 'main' of https://github.com/CWRU-Connected-Devices/connected-devices-spring25 into ours)
 
-# Rope project settings
-.ropeproject
+# IPython Notebook
+.ipynb_checkpoints
+
+<<<<<<< HEAD
+# OS X
+.DS_Store
+
+=======
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# dotenv
+.env
+
+# virtualenv
+venv/
+ENV/
+
+# Spyder project settings
+.spyderproject
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
+#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  and can be added to the global gitignore or merged into this file.  For a more nuclear
+#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+#.idea/
+
+### Python Patch ###
+# Poetry local configuration file - https://python-poetry.org/docs/configuration/#local-configuration
+poetry.toml
+
+# ruff
+.ruff_cache/
+
+# LSP config files
+pyrightconfig.json
+
+# End of https://www.toptal.com/developers/gitignore/api/python
 
 # OS X
 .DS_Store
 
+>>>>>>> 8b36a36 (Merge branch 'main' of https://github.com/CWRU-Connected-Devices/connected-devices-spring25 into ours)
 # vi files
 ~*
 *.swp
