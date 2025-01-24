@@ -3,6 +3,7 @@ import pigpio
 from typing import Literal, Dict
 from colorsys import hsv_to_rgb
 from math import floor
+from time import sleep
 
 LED_COLORS = ("red", "green", "blue")
 LedColor = Literal["red", "green", "blue"]
@@ -113,13 +114,16 @@ class LampiDriver:
         """
         scaled_h = self._hue / 360
         scaled_s = self._saturation / 100
-        scaled_v = self._brightness / 100
+        v = 1.0 # Keep v at 1.0 for HSV philosophy reasons
 
-        (r, g, b) = hsv_to_rgb(scaled_h, scaled_s, scaled_v)
+        (r, g, b) = hsv_to_rgb(scaled_h, scaled_s, v) 
         full_r = floor(r * 255)
         full_g = floor(g * 255)
         full_b = floor(b * 255)
-        return (full_r, full_g, full_b)
+
+        # Use the brighness value out of 100, and scale the rgb values by that multiplier
+        scaled_brightness = self._brightness / 100
+        return (full_r * scaled_brightness, full_g * scaled_brightness, full_b * scaled_brightness)
 
     @property
     def on(self) -> int:
