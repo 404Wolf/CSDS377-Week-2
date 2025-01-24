@@ -6,6 +6,8 @@ mount
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
 ### Python ###
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -16,6 +18,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+env/
 build/
 develop-eggs/
 dist/
@@ -33,6 +36,9 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+*.egg-info/
+.installed.cfg
+*.egg
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -58,6 +64,8 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+*,cover
+.hypothesis/
 
 # Translations
 *.mo
@@ -80,6 +88,7 @@ instance/
 docs/_build/
 
 # PyBuilder
+<<<<<<< HEAD
 .pybuilder/
 target/
 
@@ -139,11 +148,27 @@ venv.bak/
 # Spyder project settings
 .spyderproject
 .spyproject
+=======
+target/
 
-# Rope project settings
-.ropeproject
+# IPython Notebook
+.ipynb_checkpoints
 
-# mkdocs documentation
+# pyenv
+.python-version
+
+# celery beat schedule file
+celerybeat-schedule
+
+# dotenv
+.env
+
+# virtualenv
+venv/
+ENV/
+
+# Spyder project settings
+.spyderproject
 /site
 
 # mypy
@@ -179,3 +204,10 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 
+# OS X
+.DS_Store
+
+# vi files
+~*
+*.swp
+*.swo
