@@ -51,7 +51,7 @@ class LampiDriver:
         Args:
             value (int): S from HSV. Value ranges from 0 - 100.
         """
-        if (value < 0 or value > 100):
+        if value < 0 or value > 100:
             raise ValueError("Invalid saturation value provided. Ignoring...")
 
         self._saturation = value
@@ -114,16 +114,20 @@ class LampiDriver:
         """
         scaled_h = self._hue / 360
         scaled_s = self._saturation / 100
-        v = 1.0 # Keep v at 1.0 for HSV philosophy reasons
+        v = 1.0  # Keep v at 1.0 for HSV philosophy reasons
 
-        (r, g, b) = hsv_to_rgb(scaled_h, scaled_s, v) 
+        (r, g, b) = hsv_to_rgb(scaled_h, scaled_s, v)
         full_r = floor(r * 255)
         full_g = floor(g * 255)
         full_b = floor(b * 255)
 
         # Use the brighness value out of 100, and scale the rgb values by that multiplier
         scaled_brightness = self._brightness / 100
-        return (full_r * scaled_brightness, full_g * scaled_brightness, full_b * scaled_brightness)
+        return (
+            full_r * scaled_brightness,
+            full_g * scaled_brightness,
+            full_b * scaled_brightness,
+        )
 
     @property
     def on(self) -> int:
@@ -160,3 +164,4 @@ class LampiDriver:
         self._pi.set_PWM_dutycycle(self._leds["red"].signal, r)
         self._pi.set_PWM_dutycycle(self._leds["green"].signal, g)
         self._pi.set_PWM_dutycycle(self._leds["blue"].signal, b)
+
