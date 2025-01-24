@@ -1,0 +1,12 @@
+[Unit]
+Description=Lampi UI sliders and lamp setters
+After=multi-user.target
+
+[Service]
+User=pi
+Type=simple
+WorkingDirectory=/home/pi/connected-devices/Lampi
+ExecStart=/home/pi/connected-devices/Lampi/main.py
+
+[Install]
+WantedBy=multi-user.target
