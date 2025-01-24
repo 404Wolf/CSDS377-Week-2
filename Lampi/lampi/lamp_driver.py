@@ -1,3 +1,0 @@
-
-class LampDriver(object):
-    pass
