@@ -1,39 +1,28 @@
 from kivy.app import App
-from kivy.uix.slider import Slider
-from kivy.uix.button import Button
+from kivy.uix.boxlayout import BoxLayout
+
 from lampi import LampiDriver
+from lampi.shared import State
 
 
-class LampiOnOffButton(Button):
-    def __init__(self, **kwargs):
-        super(LampiOnOffButton, self).__init__(**kwargs)
-        self.size_hint = (1, 0.15)
-        self.text = "On"
+class LampiLayout(BoxLayout):
+    def update_saturation(self, saturation):
+        self.ids.color_box.color = State.driver.get_rgb()
+        State.driver.saturation = saturation
 
-    def get_on_then_toggle(self):
-        self.text = "On" if self.text == "Off" else "Off"
-        return self.text == "On"
+    def update_hue(self, hue):
+        self.ids.color_box.color = State.driver.get_rgb()
+        State.driver.hue = hue
 
-
-class LampiSlider(Slider):
-    def __init__(self, **kwargs):
-        super(LampiSlider, self).__init__(**kwargs)
-        self.size_hint = (1, 0.33)
+    def update_brightness(self, brightness):
+        self.ids.color_box.color = State.driver.get_rgb()
+        State.driver.brightness = brightness
 
 
 class LampiApp(App):
     def __init__(self, pi):
         super(LampiApp, self).__init__()
-        self.driver = LampiDriver(pi)
 
-        for attr in ["hue", "brightness", "saturation", "on"]:
-            self._create_property(attr=attr)
-
-    def _create_property(self, attr):
-        def getter(self, attr=attr):
-            return getattr(self.driver, attr)
-
-        def setter(self, value, attr=attr):
-            setattr(self.driver, attr, value)
-
-        setattr(LampiApp, attr, property(getter, setter))
+        State.driver = LampiDriver(pi)
+        State.driver = LampiDriver(pi)
+        State.driver.on = False

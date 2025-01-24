@@ -50,14 +50,8 @@ class LampiDriver:
         Args:
             value (int): S from HSV. Value ranges from 0 - 100.
         """
-<<<<<<< HEAD
-        if value < 0 or value > 100:
-            print("Invalid saturation value provided. Ignoring...")
-            return None
-=======
         if (value < 0 or value > 100):
             raise ValueError("Invalid saturation value provided. Ignoring...")
->>>>>>> a6bf344641455554f36aab142046ef03073c7152
 
         self._saturation = value
         self._update_lamp()

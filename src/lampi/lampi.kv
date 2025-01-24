@@ -1,27 +1,45 @@
-# vim: set ft=yaml:
 #:kivy 1.9
 
-BoxLayout:
+#:include lampi/controls/lampi_toggle.kv
+#:include lampi/controls/color_box.kv
+#:include lampi/controls/gradient_slider.kv
+#:import State lampi.shared.State
+#:include lampi/colors.kv
+
+LampiLayout:
   orientation: "vertical"
 
-  LampiSlider:
+  GradientSlider:
     id: hue
     min: 0
     max: 360
-    on_value: app.hue = self.value
+    on_value: root.update_hue(self.value)
+    colors: red, yellow, green, cyan, blue, magenta, red
+    thumb_image_light: 'images/brightness_icon_light_small.png'
+    thumb_image_dark: 'images/brightness_icon_dark_small.png'
 
-  LampiSlider:
+  GradientSlider:
     id: saturation
     min: 0
     max: 100
-    on_value: app.saturation = self.value
+    on_value: root.update_saturation(self.value)
+    colors: red, green, blue
+    thumb_image_light: 'images/brightness_icon_light_small.png'
+    thumb_image_dark: 'images/brightness_icon_dark_small.png'
 
-  LampiSlider:
+  GradientSlider:
     id: brightness
     min: 0
     max: 100
-    on_value: app.brightness = self.value
+    on_value: root.update_brightness(self.value)
+    colors: black, white
+    thumb_image_light: 'images/brightness_icon_light_small.png'
+    thumb_image_dark: 'images/brightness_icon_dark_small.png'
 
-  LampiOnOffButton:
-    on_press: app.on = self.get_on_then_toggle()
+  ColorBox:
+    id: color_box
 
+  LampiToggle:
+    on_press: State.driver.on = not State.driver.on
+    accent_color: (1,0,0)
+    image: "images/power_icon_light.png"

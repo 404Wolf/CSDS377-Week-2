@@ -69,7 +69,7 @@ class GradientSlider(Slider):
         first_color_index = 0
         second_color_index = 0
 
-        position = self.value * float(len(self.colors) - 1)
+        position = (self.value / self.max) * float(len(self.colors) - 1)
         first_color_index = math.trunc(position)
         second_color_index = first_color_index + 1
         if second_color_index > len(self.colors) - 1:
@@ -89,7 +89,7 @@ class GradientSlider(Slider):
         self._thumb_border_color = colorsys.hsv_to_rgb(h, s, v * 0.75)
 
     def _update_thumb_image(self):
-        r, g, b, a = self._thumb_color
+        r, g, b, _ = self._thumb_color
         cumulative = r * 0.213 + g * 0.715 + b * 0.072
 
         if cumulative < 0.5:

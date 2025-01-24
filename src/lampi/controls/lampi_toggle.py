@@ -4,7 +4,6 @@ from kivy.clock import Clock
 
 
 class LampiToggle(ToggleButton):
-
     image = StringProperty()
     image_size = NumericProperty(30.0)
     accent_color = ColorProperty([1.0, 1.0, 1.0])
